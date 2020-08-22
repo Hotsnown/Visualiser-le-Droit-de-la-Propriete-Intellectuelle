@@ -19,37 +19,44 @@ Notre réseau est défini par un ensemble d'éléments : les articles du CPI et 
 
 Ces éléments sont représentés graphiquement par des cercles qui sont éventuellement reliés par une ligne lorsqu’un arrêt cite un article.
 
+![image](./step1.jpg)
+
 Le fait que deux arrêts citent le même article conduit à former une relation indirecte entre les deux arrêts.
+
+![image](./step2.jpg)
 
 En étendant cette logique, on parvient à relier l’intégralité des articles du Code de la propriété intellectuelle.
 
-Le Droit de la Propriété Intellectuelle (source)
+![image](./overview.png)
+
 
 ## Quelques chiffres
 
-Collecte des données. Les décisions ont été collectées à partir de trois bases de données (INCA/CASS/CAPP) mise à disposition par data.gouv.fr, dont la somme totale nette s'élève à 500 000 décisions. Après avoir supprimé les décisions dupliquées, vides et ambiguës, le corpus nettoyé a été à approximativement 450 000 décisions. Finalement, le corpus a été limité aux litiges en Propriété Intellectuelle, diminuant ainsi le fonds à 1015 décisions.
+**Collecte des données.** Les décisions ont été collectées à partir de trois bases de données (INCA/CASS/CAPP) mise à disposition par data.gouv.fr, dont la somme totale nette s'élève à 500 000 décisions. Après avoir supprimé les décisions dupliquées, vides et ambiguës, le corpus nettoyé a été à approximativement 450 000 décisions. Finalement, le corpus a été limité aux litiges en Propriété Intellectuelle, diminuant ainsi le fonds à 1015 décisions.
 
-Traitement des données. Après avoir collecté les données, le réseau a été construit à l’aide de la populaire bibliothèque networkx. Il en est résulté un graphe comportant 1674 noeuds (dont 659 articles et 1015 décisions) et 2958 liens.
+**Traitement des données.** Après avoir collecté les données, le réseau a été construit à l’aide de la populaire bibliothèque networkx. Il en est résulté un graphe comportant 1674 noeuds (dont 659 articles et 1015 décisions) et 2958 liens.
 
-Visualisation des données. Maintenant qu’une une représentation abstraite du réseau est disponible, il est nécessaire de le matérialiser. Cette étape est loin d’être triviale et suppose de faire des choix quant à la disposition ou au style des noeuds (entre autres). Par exemple, il a été choisi de créer une relation linéaire entre la taille d’un noeud du graphe et son nombre de connexions. 
+**Visualisation des données.** Maintenant qu’une une représentation abstraite du réseau est disponible, il est nécessaire de le matérialiser. Cette étape est loin d’être triviale et suppose de faire des choix quant à la disposition ou au style des noeuds (entre autres). Par exemple, il a été choisi de créer une relation linéaire entre la taille d’un noeud du graphe et son nombre de connexions. 
 
 Représentation visuelle de la construction du layout du graphe disponible ci-joint
 
 ## Le Monde (de la PI) est Petit
 
-“The purpose of visualization is insight, not pictures.”
+“*The purpose of visualization is insight, not pictures.*”
 ―Ben Shneiderman
 
 Je vous propose de jouer à un jeu. Il se joue, après avoir choisi deux articles aléatoires, en voyant s’il est possible de connecter le premier avec le second dans notre graphe. Une connexion est établie si les deux articles sont citées dans la même décision. L'objectif est de connecter les deux articles avec six connexions ou moins.
 
 Par exemple, si l’on choisit les articles L.711-1 et L122-5 du CPI après tirage au sort, il semblerait difficile de trouver un lien entre les deux articles. Le premier définit les conditions de validité d’une marque tandis que le second prévoit (entre autres) une exception familiale à l’action en contrefaçon. Il apparaît cependant qu’il est possible de tracer un chemin.
 
+![image](./chain.jpg)
+
 Dans l’ordre :
-L. 711-1 du CPI
-Cour de cassation, civile, Chambre commerciale, 6 mai 2014, 11-22.108, Inédit
-L. 122-2 du CPI
-Cour de cassation, civile, Chambre civile 1, 14 janvier 2010, 08-16.024, Inédit
-L. 122-5-1 du CPI
+- *L. 711-1 du CPI*
+- *Cour de cassation, civile, Chambre commerciale, 6 mai 2014, 11-22.108, Inédit*
+- *L. 122-2 du CPI*
+- *Cour de cassation, civile, Chambre civile 1, 14 janvier 2010, 08-16.024, Inédit*
+- *L. 122-5-1 du CPI*
 
 Le premier arrêt est une action en contrefaçon où l’article L. 122-2 est invoqué dans les moyens du demandeur pour arguer que la présentation accessoire d’un produit protégé par une marque ne caractérise pas la condition de communication requise par l’action en contrefaçon, tandis que l’article L. 711-1 est invoqué pour demander la nullité de la marque pour absence de distinctivité.
 
